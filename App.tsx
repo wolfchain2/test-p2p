@@ -3,7 +3,7 @@ import React from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import HomePage from './pages/HomePage'; // Ensured relative path
+import HomePage from '@/pages/HomePage'; // Updated path
 import MarketP2PPage from './pages/MarketP2PPage';
 import InvestorsPage from './pages/InvestorsPage';
 import BorrowersPage from './pages/BorrowersPage';
@@ -39,7 +39,7 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow container mx-auto px-3 sm:px-6 py-8">
+      <main className="flex-grow container mx-auto px-4 sm:px-6 py-6 sm:py-8">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />

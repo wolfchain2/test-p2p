@@ -50,12 +50,20 @@ export interface Payment {
 
 export interface AIMatchProfile {
   id: string;
-  risk: string; // For loans, or investor's risk tolerance
-  level: string; // For investor level (Gold, Silver) or loan grade (A, B)
-  detail: string;
+  risk: string; // For loans (borrower_loan type), or investor's risk tolerance (investor type)
+  level: string; // For investor level (Gold, Silver) or loan grade (A, B for borrower_loan type)
+  detail: string; // General description or summary
   profileType: 'investor' | 'borrower_loan'; // To distinguish AI match types
-  exactInvestmentAmount?: number; // For investors: specific amount they are willing to offer
-  preferredTerms?: { interestRate: number; weeks: number; }; // For investors: preferred loan terms
+
+  // Fields specific to 'investor' profiles (when a borrower is searching for investors)
+  exactInvestmentAmount?: number;
+  preferredTerms?: { interestRate: number; weeks: number; };
+
+  // Fields specific to 'borrower_loan' profiles (when an investor is searching for loans)
+  loanAmount?: number;       // e.g., 100 (for $100)
+  loanPurpose?: string;      // e.g., "Adquisición de vehículo"
+  loanWeeks?: number;        // e.g., 4 (for 4 weeks)
+  loanInterestRate?: number; // e.g., 0.07 (for 7% weekly interest)
 }
 
 export enum RegistrationType {

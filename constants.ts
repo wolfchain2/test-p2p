@@ -1,12 +1,23 @@
+
 import { NavItem, Stat, LoanTermOption, LoanPurpose, AIMatchProfile } from './types';
 
 export const NAV_ITEMS: NavItem[] = [
+  { label: 'Cómo funciona', path: '/home', sectionId: 'home-how-it-works' },
+  { label: 'Market P2P', path: '/marketp2p', sectionId: 'marketp2p' },
+  { label: 'Solicitar Prestamo', path: '/prestamos', sectionId: 'prestamos' },
+  { label: 'Invertir', path: '/inversionistas', sectionId: 'inversionistas' },
+];
+
+// Retaining other navigation items for potential future use or different contexts if needed.
+// These are not used in the primary header as per the new design.
+export const FULL_NAV_ITEMS_LEGACY: NavItem[] = [
   { label: 'Inicio', path: '/home', sectionId: 'home' },
   { label: 'Market P2P', path: '/marketp2p', sectionId: 'marketp2p' },
   { label: 'Inversionistas', path: '/inversionistas', sectionId: 'inversionistas' },
   { label: 'Préstamos', path: '/prestamos', sectionId: 'prestamos' },
   { label: 'Registro', path: '/registro', sectionId: 'registro' },
 ];
+
 
 export const HOME_STATS: Stat[] = [
   { 
@@ -65,9 +76,39 @@ export const API_KEY_ERROR_MESSAGE = "API key not configured. Please set the API
 export const GEMINI_MODEL_TEXT = 'gemini-2.5-flash-preview-04-17';
 
 export const MOCK_AI_PROFILES_INVESTOR_SEARCHING_LOAN: AIMatchProfile[] = [ // Investor looking for loans
-    { id: 'P00X1', risk: 'Bajo', level: 'Calificación A', detail: 'Préstamo para vehículo, historial impecable.', profileType: 'borrower_loan' as const },
-    { id: 'P00X2', risk: 'Medio', level: 'Calificación B', detail: 'Consolidación de deuda, buen potencial.', profileType: 'borrower_loan' as const },
-    { id: 'P00X3', risk: 'Bajo', level: 'Calificación A+', detail: 'Educación, proyecto prometedor.', profileType: 'borrower_loan' as const }
+    {
+        id: 'P00X1',
+        risk: 'Bajo',
+        level: 'Calificación A',
+        detail: 'Necesita fondos para comprar un nuevo vehículo para su negocio de entregas. Historial crediticio impecable y plan de negocio sólido.',
+        profileType: 'borrower_loan' as const,
+        loanAmount: 75,
+        loanPurpose: 'Adquisición de vehículo comercial',
+        loanWeeks: 3,
+        loanInterestRate: 0.07 // 7% semanal
+    },
+    {
+        id: 'P00X2',
+        risk: 'Medio',
+        level: 'Calificación B',
+        detail: 'Busca consolidar deudas de tarjetas de crédito con altas tasas de interés. Empleo estable y buen potencial de repago.',
+        profileType: 'borrower_loan' as const,
+        loanAmount: 100,
+        loanPurpose: 'Consolidación de deuda',
+        loanWeeks: 4,
+        loanInterestRate: 0.10 // 10% semanal
+    },
+    {
+        id: 'P00X3',
+        risk: 'Bajo',
+        level: 'Calificación A+',
+        detail: 'Requiere financiamiento para un curso de especialización profesional. Proyecto educativo prometedor con alta empleabilidad.',
+        profileType: 'borrower_loan' as const,
+        loanAmount: 50,
+        loanPurpose: 'Financiamiento Educativo',
+        loanWeeks: 2,
+        loanInterestRate: 0.05 // 5% semanal
+    }
 ];
 
 export const MOCK_AI_PROFILES_BORROWER_SEARCHING_INVESTOR: AIMatchProfile[] = [ // Borrower looking for investors
@@ -101,7 +142,7 @@ export const MOCK_AI_PROFILES_BORROWER_SEARCHING_INVESTOR: AIMatchProfile[] = [ 
 ];
 
 export const LOAN_REQUEST_PURPOSES = ["Mejoras del hogar", "Consolidación de deuda", "Educación", "Viaje", "Emergencia médica", "Compra de vehículo", "Pequeña empresa"];
-export const LOAN_REQUEST_AMOUNTS = [50, 100, 200, 500, 1000, 2000, 5000];
+export const LOAN_REQUEST_AMOUNTS = [20, 50, 75, 100]; // Updated to reflect $20-$100 range
 export const LOAN_REQUEST_RISKS = ["Bajo", "Medio", "Alto"];
 
 export const FUNDING_OFFER_INTERESTS = ["proyectos tecnológicos", "pequeñas empresas", "consolidación de deudas", "educación continua", "proyectos de arte", "startups innovadoras"];
